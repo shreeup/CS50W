@@ -1,0 +1,33 @@
+
+{% extends "encyclopedia/layout.html" %}
+
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+
+{% if messages %}
+
+{% for message in messages %}
+    <div class="alert" role="alert">{{ message }}</div>
+{% endfor %}
+
+{% endif %}
+
+
+    <p>
+        <h1>Update Entry:</h1>
+        <p> {{ form.entrytitle.label }}</p>
+        <form action="{% url 'update' form.entrytitle.label %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" name="entrytitle" value="{{form.entrytitle.label}}" />
+            {{ form.entrydesc }}
+            <input type="submit">
+        </form>
+        <!-- <a href="{% url 'index' %}">Home</a> -->
+    </p>
+
+{% endblock %}
+

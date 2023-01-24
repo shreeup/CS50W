@@ -1,0 +1,1 @@
+Software life cycle models describe phases of the software cycle and the order in which those phases are executed.
