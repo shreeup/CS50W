@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Image Search</title>
+        <link rel="stylesheet" href="./styles/style.css">
+            <script type="text/javascript">
+                function showImageResults()
+	{
+	   var a = document.getElementById('imageq').value;
+       
+	   window.location = 'https://www.google.com/search?tbm=isch&q='+ a;
+       
+	}
+            </script>
+    </head>
+    <body>
+        <div style="float:right;display:flex;">
+            <span><a href="./index.html" title="Image search">
+                <img class="thirtytwo" src="./images/srchicon.png"/>
+                <figcaption>Home</figcaption>
+            </a>
+        </div>
+       <div style="clear: both;"></div>
+        <div>
+            <center>
+                <form action="https://www.google.com/search">
+                    <div class="logo">
+                        <img alt="Google" src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png">
+                      </div>
+                        <div class="bar">
+                            <svg  style="vertical-align: middle;" height="21" viewBox="0 0 21 21" width="21" xmlns="http://www.w3.org/2000/svg">
+                                <g fill="none" fill-rule="evenodd" stroke="#808080" stroke-linecap="round" stroke-linejoin="round">
+                                  <circle cx="8.5" cy="8.5" r="5"></circle>
+                                  <path d="m17.571 17.5-5.571-5.5"></path>
+                                </g>
+                              </svg>
+                            <input class="searchbar" type="text" id="imageq" name="imageq" title="Search">
+                            <a href="#"> <img style="height:21px;vertical-align: middle;" class="voice" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Google_mic.svg/716px-Google_mic.svg.png" title="Search by Voice"></a>
+                          </div>
+                                      <div style="text-align: center;">
+                        <input type="button" class="srchbtn" onclick="showImageResults()" value="Google Search">
+                        <input type="submit" class="srchbtn" name="btnI" value="I'm feeling lucky">
+                    </div>
+                    
+                </form>
+                 </center>
+        </div>
+       
+    </body>
+</html>
+
