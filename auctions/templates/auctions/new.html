@@ -1,0 +1,31 @@
+
+
+{% extends "auctions/layout.html" %}
+
+
+{% block title %}
+    {{title}}
+{% endblock %}
+
+{% block body %}
+
+{% if messages %}
+
+{% for message in messages %}
+    <div class="alert" role="alert">{{ message }}</div>
+{% endfor %}
+
+{% endif %}
+
+
+    <p>
+        <h1>Add Entry:</h1>
+        <form action="{% url 'add' %}" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit">
+        </form>
+    </p>
+
+{% endblock %}
+

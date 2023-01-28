@@ -1,0 +1,21 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h2>Active Listings</h2>
+
+    <ul>
+        {% for prod in listing %}
+            <li>
+                <a href="{% url 'listing' prod.id %}">
+                    Product {{ prod.id }}: {{ prod.name }} price {{ prod.price }}
+                </a>
+            </li>
+            {% empty %}
+            No Active Listing
+        {% endfor %}
+    </ul>
+    {% if user.is_authenticated %}
+    <a href="{% url 'add' %}">Add New</a>
+    {% endif %}
+{% endblock %}
+
