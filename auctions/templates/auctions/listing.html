@@ -1,0 +1,71 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+
+
+
+<h1>Listing {{ listing.id }}</h1>
+
+{% if isbidder %}
+<h4>You are currently the owner of bid!</h4>
+{% endif %}
+<ul>
+    <li>Name: {{ listing.name }}</li>
+    <li>Description: {{ listing.description }}</li>
+    <li>Price: {{ listing.price }}</li>
+    <li>FirstBid: {{ listing.startingbid }}</li>
+    <li>Image: <img alt="product image" src='{{listing.image_url}}' style="max-height:500px;max-width:500px;" /></li>
+    </ul>
+    {% if user.is_authenticated %}
+    <u><a href="{% url 'addwatch' listing.id%}">
+        {% if activewatcher %}
+        Remove from WatchList
+        {% else %}
+        Add to WatchList
+        {% endif %}
+    </a></u>
+   
+        <p>
+            {% if listing.isactive %}
+
+            {% if iscreator %}
+            <u><a href="{% url 'deactivate' listing.id %}">Close Auction</a></u>
+            {% endif %}
+
+            <form action="{% url 'addbid' listing.id%}" method="post" class="form-inline">
+                {% csrf_token %}
+                 {{bidform}}
+                <input type="submit" value="Place Bid!">
+            </form>
+            <p>
+            <form action="{% url 'addcomment' listing.id%}" method="post" class="form-inline">
+                {% csrf_token %}
+                {{commentform}} 
+                <input type="submit" value="Add Review!">
+            </form>
+            </p>
+            {% else %}
+            Auction is closed for this listing. You can neither place bid nor comment.
+            {% endif %}
+        </p>
+       
+        <p>
+            <h5>Comments: </h5>
+            <ul>
+                {% for review in reviews %}
+                    <li>{{ review }}</li>
+                {% empty %}
+                    <li>No reviews yet.</li>
+                {% endfor %}
+            </ul>
+        </p>
+    {% endif %}
+</ul>
+<p>
+ 
+</p>
+
+<a href="{% url 'index' %}">Back to Full List</a>
+
+{% endblock %}
