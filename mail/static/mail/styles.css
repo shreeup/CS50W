@@ -1,0 +1,29 @@
+textarea {
+    min-height: 400px;
+}
+
+.mailviewdiv{
+    border:1px solid black;
+    display:flex;
+    padding:1%;
+}
+
+.mailviewdiv .one{
+    flex:1 1 auto;
+
+}
+
+.mailviewdiv .one{
+    flex:1 1 auto;
+
+}
+
+
+.mailviewdiv .timestamp{
+   text-align: right;
+    flex:1 1 auto;
+}
+
+.graybg{
+    background-color: lightgray;
+}
