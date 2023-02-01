@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelector('#sent').addEventListener('click', () => load_mailbox('sent'));
   document.querySelector('#archived').addEventListener('click', () => load_mailbox('archive'));
   document.querySelector('#compose').addEventListener('click', ()=> compose_email());
-  document.querySelector('#compose-form').addEventListener('submit', submit_email);
+  document.querySelector('#compose-form').addEventListener('submit', (event)=>submit_email(event));
   // By default, load the inbox
   load_mailbox('inbox');
 
@@ -49,7 +49,17 @@ function submit_email(event) {
       body: document.querySelector('#compose-body').value
     })
   })
-    .then(response => { load_mailbox('sent') });
+  .then(response => response.json())
+  .then(result => {
+    if ("message" in result) {
+        // The email was sent successfully!
+        load_mailbox('sent');
+    }
+  })
+    .catch(error => {
+        // we hope this code is never executed, but who knows?
+        console.log(error);
+    });
 }
 
 async function mailBox(mailbox) {
