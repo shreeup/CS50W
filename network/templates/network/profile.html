@@ -1,0 +1,13 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+<p>
+    <h1>Profile</h1>
+    <h4>{{profile.name}}</h4>
+    <p>Followers count :{{profile.followers_count}}</p>
+    <p>Followees count :{{profile.followees_count}}</p>
+    {% if profile.actiontext %}
+    <button><a href="{% url 'followaction' profile.userid %}">{{profile.actiontext}}</a></button>
+    {% endif %}
+</p>
+{% endblock %}
