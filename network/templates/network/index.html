@@ -1,0 +1,73 @@
+<script src="../../static/network/index.js"></script>
+{% extends "network/layout.html" %}
+
+{% block body %}
+{% if user.is_authenticated %}
+<p>
+<h1>New Post</h1>
+
+<form action="{% url 'addpost' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <input type="submit">
+</form>
+<p id="msgdiv">
+    {% if messages %}
+    {% for message in messages %}
+<div class="alert alert-dismissible alert-success ">
+    <button type="button" class="close" data-dismiss="alert">
+        ×
+    </button>
+    <strong>{{message}}</strong>
+</div>
+{% endfor %}
+{% endif %}
+</p>
+
+{% for post in page_obj %}
+<a href="#" onclick="EditPost('{{post.id}}')">Edit</a><br/>
+<form action="#" id="editpostform" data-postid={{post.id}} class="hidden" method="post">
+    {% csrf_token %}
+    <textarea cols="50" rows="3" id="contenttextarea" required name="content" disabled>{{post.content}}</textarea><br />
+    <p>{{ post.timestamp }}</p>
+    <input type="submit" id="editpostsubmit">
+</form>
+<i>&hearts; {{ post.likes.count }}</i><br>
+{% empty %}
+<p>No posts yet.</p>
+{% endfor %}
+<nav aria-label="Page navigation example">
+
+    <div class="pagination">
+        <span class="step-links">
+            <ul class="pagination">
+                {% if page_obj.has_previous %}
+                <li class="page-item"><a class="page-link" href="?page=1">&laquo; first</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.previous_page_number }}">previous</a>
+                </li>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.next_page_number }}">next</a></li>
+                <li class="page-item"><a class="page-link" href="?page={{ page_obj.paginator.num_pages }}">last
+                        &raquo;</a></li>
+                {% endif %}
+            </ul>
+        </span>
+    </div>
+
+</nav>
+{% endif %}
+</p>
+{% endblock %}
+<script>
+    var message_ele = document.getElementById("msgdiv");
+
+    setTimeout(function () {
+        message_ele.style.display = "none";
+    }, 3000);
+</script>
