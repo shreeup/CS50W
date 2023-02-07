@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Question, Choice
+from .models import Question, Choice, User
 
 admin.site.site_header = "Polly Admin"
 admin.site.site_title = "Polly Admin Area"
@@ -19,5 +19,5 @@ class QuestionAdmin(admin.ModelAdmin):
         'fields': ['pub_date'], 'classes': ['collapse']}), ]
     inlines = [ChoiceInLine]
  
- 
+admin.site.register(User)
 admin.site.register(Question, QuestionAdmin)
