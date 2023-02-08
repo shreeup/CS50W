@@ -1,0 +1,80 @@
+.searchbox{
+    background-color: whitesmoke;
+    border: none;
+    border-radius: 2rem;
+    color: black;
+    font-family: inherit;
+    font-size: inherit;
+    height: 100%;
+    outline: 0;
+    padding-inline-end: 44px;
+    padding-inline-start: 52px;
+    position: relative;
+    width: 100%;
+    appearance: auto;
+box-sizing: border-box;
+padding: 1px 2px;
+background-repeat:no-repeat;
+background-position:left 8px;  padding-left:15px;
+background-image:url('../images/srchicon.png');
+display: flex;
+z-index: 3;
+height: 44px;
+
+border: 1px solid #5f6368;
+box-shadow: none;
+border-radius: 24px;
+margin: 0 30%;
+width: 50%;
+max-width: 584px;
+background-size:32px 32px;
+text-indent:35px;
+}
+.srchbtn{
+    background-color: #303134;
+border: 1px solid #303134;
+border-radius: 4px;
+color: #e8eaed;
+font-family: Roboto,arial,sans-serif;
+font-size: 14px;
+margin: 11px 50%;
+padding: 0 16px;
+line-height: 27px;
+height: 36px;
+min-width: 54px;
+text-align: center;
+cursor: pointer;
+user-select: none;
+display: inline-block;
+margin:20px;
+}
+img[class="thirtytwo"]{
+    height:32px;
+    width:32px;
+}
+.bar{
+    margin:0 auto;
+    width:575px;
+    border-radius:30px;
+    border:1px solid #dcdcdc;
+  }
+  .bar:hover{
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+  }
+  .bar:focus-within{
+    box-shadow: 1px 1px 8px 1px #dcdcdc;
+    outline:none;
+  }
+  .searchbar{
+    height:45px;
+    border:none;
+    width:500px;
+    font-size:16px;
+    outline: none;
+    
+  }
+
+  .logo{
+    margin-top:200px;
+    margin-bottom:20px;
+  }
