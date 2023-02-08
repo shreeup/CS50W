@@ -11,6 +11,7 @@ import pdb
 from django.contrib.auth import authenticate, login, logout
 from django.db import IntegrityError
 from django.core.paginator import Paginator
+
 # Get questions and display them
 
 
@@ -66,12 +67,12 @@ def register(request):
         return render(request, "polls/register.html")
 
 
-
 def index(request):
-	latest_question_list = Question.objects.order_by('-pub_date')
-    #paginator = Paginator(latest_question_list, 5)
-	context = {'latest_question_list': latest_question_list}
-	return render(request, 'polls/index.html',context)
+    latest_question_list=Question.objects.order_by('-pub_date')
+    paginator=Paginator(latest_question_list,5)
+    page_number=request.GET.get('page')
+    page_obj=paginator.get_page(page_number)
+    return render(request,'polls/index.html',{'page_obj':page_obj})
 
 # Show specific question and choices
 

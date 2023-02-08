@@ -2,8 +2,8 @@
 {% block content %}
 {% if user.is_authenticated %}
 <h1 class ="text-center mb-3">Poll Questions</h1>
-{% if latest_question_list %}
-{% for question in latest_question_list %}
+{% if page_obj %}
+{% for question in page_obj %}
 <div class ="card-mb-3">
 	<div class ="card-body">
 		<p class ="lead">{{ question.question_text }}</p>
@@ -13,6 +13,24 @@
 	</div>
 </div>
 {% endfor %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; first</a>
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
 {% else %}
 
 <p>No polls available</p>
