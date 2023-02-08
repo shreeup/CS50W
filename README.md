@@ -30,11 +30,11 @@ declares name of project
 
 defines api to persist, fetch data from storage
 
-- index displaying all the questions from database.
+- index displaying all the questions from database with pagination.
 
 - detail fetchs specific question by question id
 
-- results displays overall polls results of question and graph with share for eaach choice
+- results displays overall polls results of question and graph with share for each choice
 
 - vote allows user to caste their vote to choice
 
